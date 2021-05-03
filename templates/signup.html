@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="signup-page">
+    <div class="overlay">
+        <div class="success" id="message">
+
+        </div>
+        <div class="login">
+            <div id="tabs">
+                <ul class="tabs">
+                    <li><a id="loginbtn" >Login</a></li>
+                    <li><a id="signbtn" >Sign up</a></li>
+                </ul>
+                <div id="login">
+                    <form id="loginForm" method="POST" action='/user/login'>
+                        <input type="email" placeholder="email" name="email" required />
+                        <input type="password" placeholder="Password" name="password" required />
+                        <input type="submit" value="Login" class="button" />
+                    </form>
+                    {% with messages = get_flashed_messages() %}  
+                    {% if messages %}  
+                          {% for message in messages %}  
+                               <p style="text-align: center;font-size: medium;">{{ message }}</p>  
+                          {% endfor %}  
+                    {% endif %}  
+                 {% endwith %}  
+                </div>
+                <div id="signup">
+                    <form id="signupForm" method="POST" action='/user/register'>
+                        <input type="text" placeholder="name" name="name" required/>
+                        <input type="email" placeholder="Mail address" name="email" required/>
+                        <input id="pass1" type="password" placeholder="Password" name="password" required/>
+                        <input id="pass2" type="password" placeholder="Confirm Password" name="Confirm" required/>
+                        <input type="submit" value="Sign up" class="button" onclick="return Validate()" />
+                    </form>
+                    {% with messages = get_flashed_messages() %}  
+                    {% if messages %}  
+                          {% for message in messages %}  
+                               <p style="text-align: center;font-size: medium;">{{ message }}</p>  
+                          {% endfor %}  
+                    {% endif %}  
+                 {% endwith %}  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function Validate() {
+        var password = document.getElementById("pass1").value;
+        var confirmPassword = document.getElementById("pass2").value;
+        if (password != confirmPassword) {
+            
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+    </script>
+</div>
+{% endblock %}

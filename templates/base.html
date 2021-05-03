@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        .homepage
+        {
+            height: 100vh;
+            background:  url("{{ url_for('static', filename='img/backgroud.jpg') }}");
+            background-size: auto;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .signup-page
+        {
+            height: 100vh;
+            background:  url("{{ url_for('static', filename='img/backsignup.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 100;
+        }
+            /* .overlay {
+            background: rgba(52, 69, 87, 0.5);
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+            transition: all .2s ease;
+            overflow: hidden;
+            } */
+
+            .success {
+            display: none;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 55px;
+            }
+
+            .login {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #34495e;
+            display: block;
+            width: 280px;
+            box-shadow: 0 0 45px 5px rgba(0, 0, 0, .35);
+            padding-bottom: 5px;
+            overflow: hidden;
+            }
+
+            .login input {
+            display: block;
+            width: 255px;
+            margin-bottom: 15px;
+            background: #2c3e50;
+            color: #fff;
+            outline: none;
+            border: none;
+            padding: 10px;
+            margin: 15px;
+            transition: all .2s ease;
+            }
+
+            .login input:hover {
+            opacity: 0.5;
+            }
+
+            .login input:focus {
+            background: #eee;
+            opacity: 0.5;
+            color: #000;
+            }
+
+            .login .button {
+            width: 254px !important;
+            background: #517191 !important;
+            }
+
+            #tabs {
+            margin: -6px -6px;
+            }
+
+            ul.tabs li
+            {   
+                display: inline-flex;
+                margin-top: 10%;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: space-between;
+                padding-left: 36px;
+
+            }
+
+            ul.tabs li a {
+            color: #fff;
+            font-size: 20px;
+            outline: none;
+            text-decoration: none;
+            
+            }
+
+            .ui-tabs-active > a {
+            text-decoration: underline;
+            font-size: 10px;
+            background: #34495e !important;
+            }
+
+            .ui-state-default > a {
+            text-decoration: underline;
+            font-size: 10px;
+            background: #2c3e50;
+            width: 140px;
+            text-align: center;
+            }
+
+            .ui-tabs {
+            position: relative;
+            padding: .2em;
+            margin-bottom: 15px;
+            }
+
+            .ui-tabs .ui-tabs-nav {
+            margin: 0;
+            padding: .2em .2em 0;
+            }
+
+            .ui-tabs .ui-tabs-nav li {
+            list-style: none;
+            float: left;
+            position: relative;
+            top: 0;
+            margin: 0;
+            border-bottom-width: 0;
+            padding: 0;
+            white-space: nowrap;
+            margin-bottom: 15px;
+            }
+
+            .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+            float: left;
+            padding: .5em 1em;
+            margin: 0;
+            text-decoration: none;
+            }
+
+            .overlay-success {
+            background: rgba(52,73,94, .97) !important;
+            transition: all 1s ease;
+            }
+
+            .overlay-fail {
+            background: rgba(231, 76, 60,.85) !important;
+            transition: all 1s ease;
+            }
+
+            .contact {
+            color: rgba(255,255,255,.6);
+            position:fixed;
+            font-size: 16px;
+            bottom: 10px;
+            right: 10px;
+            }
+            .contact:hover {
+            text-decoration:none;
+            color: rgba(255,255,255,.6);
+            }
+    </style>
+    
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contact</a>
+                    </li>
+                    {% if email %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/logout">Logout</a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+                {% if email %}
+                <div class="d-flex">
+                    <p>Wellcome {{ email }}</p>
+                </div>
+                {% else %}
+                <div class="d-flex">
+                    <a class="btn btn-outline-success" href="/user/signup"> Login/Signup</a>
+                </div>
+                {% endif %}
+
+          </div>
+        </div>
+    </nav>
+
+    
+{% block content %}
+{% endblock %}
+
+<script>
+    $(document).ready(function()
+    {
+        $("#signup").hide();
+        $("#errors").hide();
+    });
+
+    $("#signbtn").click(function()
+        {
+            $("#loginForm").hide(1000);
+            $("#signup").show(1000); 
+        }
+    )
+
+    $("#loginbtn").click(function()
+        {
+            $("#loginForm").show(1000);
+            $("#signup").hide(1000); 
+        }
+    )
+    
+</script>
+
+
+   
+</body>
+</html>
